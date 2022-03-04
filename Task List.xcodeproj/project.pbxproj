@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		225F17C120857638020C141D /* Pods_Task_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86079CA350FC8D07E5136136 /* Pods_Task_List.framework */; };
 		F0C56C5D27CFAC0D0045A6A8 /* Task_ListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C56C5C27CFAC0D0045A6A8 /* Task_ListApp.swift */; };
-		F0C56C5F27CFAC0D0045A6A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C56C5E27CFAC0D0045A6A8 /* ContentView.swift */; };
+		F0C56C5F27CFAC0D0045A6A8 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C56C5E27CFAC0D0045A6A8 /* EditView.swift */; };
 		F0C56C6127CFAC0F0045A6A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C56C6027CFAC0F0045A6A8 /* Assets.xcassets */; };
 		F0C56C6427CFAC0F0045A6A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0C56C6327CFAC0F0045A6A8 /* Preview Assets.xcassets */; };
 		F0C56C6B27CFAC8C0045A6A8 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C56C6A27CFAC8C0045A6A8 /* Tasks.swift */; };
@@ -22,7 +22,7 @@
 		ED82548C1D5FC849712339D4 /* Pods-Task List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task List.release.xcconfig"; path = "Target Support Files/Pods-Task List/Pods-Task List.release.xcconfig"; sourceTree = "<group>"; };
 		F0C56C5927CFAC0D0045A6A8 /* Task List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Task List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C56C5C27CFAC0D0045A6A8 /* Task_ListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task_ListApp.swift; sourceTree = "<group>"; };
-		F0C56C5E27CFAC0D0045A6A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F0C56C5E27CFAC0D0045A6A8 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		F0C56C6027CFAC0F0045A6A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0C56C6327CFAC0F0045A6A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F0C56C6A27CFAC8C0045A6A8 /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
@@ -61,6 +61,7 @@
 		F018FC5027D1444C0095FC42 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F0C56C5E27CFAC0D0045A6A8 /* EditView.swift */,
 				F0C56C6C27CFB6C30045A6A8 /* TaskData.swift */,
 			);
 			path = View;
@@ -69,6 +70,7 @@
 		F018FC5127D144560095FC42 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F0C56C6A27CFAC8C0045A6A8 /* Tasks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,10 +107,8 @@
 				F018FC5127D144560095FC42 /* Model */,
 				F018FC5027D1444C0095FC42 /* View */,
 				F0C56C5C27CFAC0D0045A6A8 /* Task_ListApp.swift */,
-				F0C56C5E27CFAC0D0045A6A8 /* ContentView.swift */,
 				F0C56C6027CFAC0F0045A6A8 /* Assets.xcassets */,
 				F0C56C6227CFAC0F0045A6A8 /* Preview Content */,
-				F0C56C6A27CFAC8C0045A6A8 /* Tasks.swift */,
 			);
 			path = "Task List";
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0C56C5F27CFAC0D0045A6A8 /* ContentView.swift in Sources */,
+				F0C56C5F27CFAC0D0045A6A8 /* EditView.swift in Sources */,
 				F0C56C6B27CFAC8C0045A6A8 /* Tasks.swift in Sources */,
 				F0C56C6D27CFB6C30045A6A8 /* TaskData.swift in Sources */,
 				F0C56C5D27CFAC0D0045A6A8 /* Task_ListApp.swift in Sources */,

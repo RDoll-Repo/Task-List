@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import SwiftUI
 
 
 // TODO in this file:
@@ -35,6 +36,7 @@ struct Nothing: Codable {
 
 
 
+
 class API {
     func getToDos() async -> [ToDo] {
         let req = AF.request("http://localhost:3000/tasks", method: .get , parameters: nil)
@@ -47,16 +49,23 @@ class API {
         _ = req.serializingDecodable(Nothing.self, emptyResponseCodes:[201,204,205])
     }
     
-    func fetchToDo() {
-        
+    func fetchToDo(toDoID:String) async -> ToDo?{
+        let req = AF.request("http://localhost:3000/tasks/\(toDoID)", method: .get)
+        let todo = try? await req.serializingDecodable([ToDo].self).value
+        guard let todo = todo else {
+            return nil
+        }
+        return todo[0]
     }
     
-    func updateToDo() {
-        
+    func updateToDo(updated:ToDo) async {
+        let req = AF.request("http://localhost:3000/tasks/\(updated.id)", method: .put, parameters: updated, encoder: JSONParameterEncoder.default)
+        _ = req.serializingDecodable(Nothing.self, emptyResponseCodes: [200])
     }
     
-    func deleteToDo() {
-        
+    func deleteToDo(toDoID:String) async {
+        let req = AF.request("http://localhost:3000/tasks/\(toDoID)", method: .delete)
+        _ = req.serializingDecodable(Nothing.self, emptyResponseCodes: [200])
     }
 }
 
