@@ -1,40 +1,24 @@
 //
-//  Tasks.swift
+//  repo.swift
 //  Task List
 //
-//  Created by Roland Doll on 3/2/22.
+//  Created by Roland Doll on 3/8/22.
 //
 
 import Foundation
 import Alamofire
-import SwiftUI
-
-
-// TODO in this file:
-// protocol {new TODO extends FullToDo}
-// API Calls {Fetch, Update, Delete}
-
-
-struct ToDo: Codable, Identifiable {
-    var id: String
-    var taskDescription: String
-    var dueDate: String
-    var completed: Bool
-    var createdAt: String
-}
-
-
-struct NewToDo: Codable {
-    var taskDescription:String
-    var dueDate:String
-    var completed:Bool
-}
 
 struct Nothing: Codable {
     
 }
 
-
+protocol repo {
+    func getToDos() async -> [ToDo]
+    func createToDo(_ newToDo: NewToDo) async
+    func fetchToDo(toDoID:String) async -> ToDo?
+    func updateToDo(updateD:ToDo) async
+    func deleteToDo(toDoID:String) async
+}
 
 
 class API {
@@ -68,5 +52,3 @@ class API {
         _ = req.serializingDecodable(Nothing.self, emptyResponseCodes: [200])
     }
 }
-
-
