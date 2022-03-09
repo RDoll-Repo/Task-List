@@ -16,12 +16,12 @@ protocol repo {
     func getToDos() async -> [ToDo]
     func createToDo(_ newToDo: NewToDo) async
     func fetchToDo(toDoID:String) async -> ToDo?
-    func updateToDo(updateD:ToDo) async
+    func updateToDo(updated:ToDo) async
     func deleteToDo(toDoID:String) async
 }
 
 
-class API {
+class API:repo {
     func getToDos() async -> [ToDo] {
         let req = AF.request("http://localhost:3000/tasks", method: .get , parameters: nil)
         let todos = try! await req.serializingDecodable([ToDo].self).value
@@ -30,7 +30,7 @@ class API {
     
     func createToDo(_ newToDo: NewToDo) async {
         let req = AF.request("http://localhost:3000/tasks", method: .post, parameters: newToDo, encoder: JSONParameterEncoder.default)
-        _ = req.serializingDecodable(Nothing.self, emptyResponseCodes:[201,204,205])
+        _ = try? await req.serializingDecodable(Nothing.self, emptyResponseCodes:[201,204,205]).value
     }
     
     func fetchToDo(toDoID:String) async -> ToDo?{
@@ -44,11 +44,11 @@ class API {
     
     func updateToDo(updated:ToDo) async {
         let req = AF.request("http://localhost:3000/tasks/\(updated.id)", method: .put, parameters: updated, encoder: JSONParameterEncoder.default)
-        _ = req.serializingDecodable(Nothing.self, emptyResponseCodes: [200])
+        _ = try? await req.serializingDecodable(Nothing.self, emptyResponseCodes: [200]).value
     }
     
     func deleteToDo(toDoID:String) async {
         let req = AF.request("http://localhost:3000/tasks/\(toDoID)", method: .delete)
-        _ = req.serializingDecodable(Nothing.self, emptyResponseCodes: [200])
+        _ = try? await req.serializingDecodable(Nothing.self, emptyResponseCodes: [200]).value
     }
 }

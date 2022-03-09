@@ -9,10 +9,8 @@ import SwiftUI
 import Alamofire
 
 struct TaskView: View {
-    @State var todos: [ToDo] = []
-    @State private var showingUpdate = false
-    @State private var showingOptions = false
-    public let api = API()
+    @StateObject private var viewModel = TaskViewModel()
+    let api = API()
     
     var body: some View {
         NavigationView {
@@ -22,33 +20,37 @@ struct TaskView: View {
                 VStack {
                     HStack {
                         Button {
-                            showingUpdate.toggle()
+                            viewModel.showingUpdate.toggle()
                         } label: {
                             Image(systemName: "plus.circle")
                         }
-                        .sheet(isPresented: $showingUpdate) {
+                        .sheet(isPresented: $viewModel.showingUpdate, onDismiss: {
+                            Task {
+                                viewModel.todos = await api.getToDos()
+                            }
+                        }) {
                             UpdateView(todo:ToDo(id:"",taskDescription: "",dueDate: "",completed: false,createdAt: ""),
                                        due: Date(),
-                                       EditType: "Create")
+                                       EditType: "Create", viewModel: viewModel, api:api)
                         }
                         Button {
-                            showingOptions.toggle()
+                            viewModel.showingOptions.toggle()
                         } label: {
                             Image(systemName: "list.bullet")
                         }
-                        .sheet(isPresented: $showingOptions) {
+                        .sheet(isPresented: $viewModel.showingOptions) {
                             OptionsView()
                         }
                     }
                     .navigationTitle("Tasks")
                     ScrollView {
-                        ForEach(todos) { todo in
-                            Cards(todo: todo)
+                        ForEach(viewModel.todos) { todo in
+                            CardView(todo: todo, viewModel:viewModel, api:api)
                         }
                     }
                 }
                 .task {
-                    todos = await api.getToDos()
+                    viewModel.todos = await api.getToDos()
                 }
             }
         }

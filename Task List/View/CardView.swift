@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-
-struct Cards: View {
+struct CardView: View {
     @State private var showingUpdate = false
     @State var todo:ToDo
+    var viewModel:TaskViewModel
+    var api:API
     
     var body: some View {
         ZStack {
@@ -37,6 +38,9 @@ struct Cards: View {
             HStack() {
                 HStack {
                     
+                    /**
+                    Edit ToDo Button
+                     */
                     Button {
                         showingUpdate.toggle()
                     } label: {
@@ -44,15 +48,21 @@ struct Cards: View {
                             .resizable(capInsets: EdgeInsets(top: 0.0, leading: 30.0, bottom: 0.0, trailing: 0.0))
                     }
                     .frame(width: 30.0, height: 30.0)
-                    .sheet(isPresented: $showingUpdate) {
-                        UpdateView(todo:todo, due: Date(), EditType: "Edit")
+                    .sheet(isPresented: $showingUpdate, onDismiss: {
+                        Task {
+                            print("ondismiss")
+                        }
+                    }) {
+                        UpdateView(todo:todo, due: Date(), EditType: "Edit", viewModel: viewModel, api:api)
                     }
                     
-
-                    
+                    /**
+                     Delete ToDo - don't fucking touch this it fucking works
+                     */
                     Button {
                         Task {
-                            await API().deleteToDo(toDoID:todo.id)
+                            await api.deleteToDo(toDoID:todo.id)
+                            viewModel.todos = await api.getToDos()
                         }
                     } label: {
                         Image(systemName: "xmark.app.fill")
@@ -64,7 +74,7 @@ struct Cards: View {
                 Button {
                     Task {
                         todo.completed.toggle()
-                        await API().updateToDo(updated: todo)
+                        await api.updateToDo(updated: todo)
                     }
                 } label: {
                     
@@ -90,9 +100,19 @@ struct Cards: View {
     }
 }
 
-struct Cards_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        Cards(todo:ToDo(id: "1", taskDescription: "Sample", dueDate: "2011-01-01", completed: true, createdAt: "2010-01-01"))
-    }
-}
+//struct Cards_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        CardView(todo:ToDo(id: "1", taskDescription: "Sample", dueDate: "2011-01-01", completed: true, createdAt: "2010-01-01")
+//    }
+//}
+
+
+// Hang on to this logic
+
+
+//, onDismiss: {
+//    Task {
+//        todos = await API().getToDos()
+//    }
+//}

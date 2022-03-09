@@ -11,7 +11,7 @@ import SwiftUI
 struct Task_ListApp: App {
     var body: some Scene {
         WindowGroup {
-            TaskData()
+            TaskView()
         }
     }
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		225F17C120857638020C141D /* Pods_Task_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86079CA350FC8D07E5136136 /* Pods_Task_List.framework */; };
 		F018FC6E27D65F640095FC42 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC6D27D65F640095FC42 /* UpdateView.swift */; };
-		F018FC7027D67CA90095FC42 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC6F27D67CA90095FC42 /* Cards.swift */; };
+		F018FC7027D67CA90095FC42 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC6F27D67CA90095FC42 /* CardView.swift */; };
 		F018FC8C27D79F700095FC42 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC8B27D79F700095FC42 /* OptionsView.swift */; };
 		F018FC8E27D7EF490095FC42 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC8D27D7EF490095FC42 /* TaskViewModel.swift */; };
 		F018FC9027D7EF830095FC42 /* repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018FC8F27D7EF830095FC42 /* repo.swift */; };
@@ -25,7 +25,7 @@
 		96F26B3F5A199D49CD848A23 /* Pods-Task List.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task List.debug.xcconfig"; path = "Target Support Files/Pods-Task List/Pods-Task List.debug.xcconfig"; sourceTree = "<group>"; };
 		ED82548C1D5FC849712339D4 /* Pods-Task List.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task List.release.xcconfig"; path = "Target Support Files/Pods-Task List/Pods-Task List.release.xcconfig"; sourceTree = "<group>"; };
 		F018FC6D27D65F640095FC42 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
-		F018FC6F27D67CA90095FC42 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		F018FC6F27D67CA90095FC42 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F018FC8B27D79F700095FC42 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		F018FC8D27D7EF490095FC42 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		F018FC8F27D7EF830095FC42 /* repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repo.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 				F0C56C6C27CFB6C30045A6A8 /* TaskView.swift */,
 				F018FC8B27D79F700095FC42 /* OptionsView.swift */,
 				F018FC6D27D65F640095FC42 /* UpdateView.swift */,
-				F018FC6F27D67CA90095FC42 /* Cards.swift */,
+				F018FC6F27D67CA90095FC42 /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 				F018FC8E27D7EF490095FC42 /* TaskViewModel.swift in Sources */,
 				F0C56C6D27CFB6C30045A6A8 /* TaskView.swift in Sources */,
 				F018FC9027D7EF830095FC42 /* repo.swift in Sources */,
-				F018FC7027D67CA90095FC42 /* Cards.swift in Sources */,
+				F018FC7027D67CA90095FC42 /* CardView.swift in Sources */,
 				F018FC8C27D79F700095FC42 /* OptionsView.swift in Sources */,
 				F0C56C5D27CFAC0D0045A6A8 /* Task_ListApp.swift in Sources */,
 				F018FC6E27D65F640095FC42 /* UpdateView.swift in Sources */,

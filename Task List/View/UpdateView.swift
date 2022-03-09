@@ -13,6 +13,8 @@ struct UpdateView: View {
     @State var todo: ToDo
     @State var due: Date
     @State var EditType: String
+    var viewModel: TaskViewModel
+    var api:API
     
     
     var body: some View {
@@ -43,9 +45,18 @@ struct UpdateView: View {
                                 dueDate: "\(due)",
                                 completed: false,
                                 createdAt: todo.createdAt))
+                            viewModel.todos = await API().getToDos()
+                            //await viewModel.getAllTodos()
+                            print(viewModel.todos)
                         }
                     }
+//                .task {
+//                        viewModel.todos = await API().getToDos()
+//                    }
                     dismiss()
+                    Task {
+                        viewModel.todos = await API().getToDos()
+                    }
                 }
             }
         }
