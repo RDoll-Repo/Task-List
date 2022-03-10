@@ -9,14 +9,10 @@ import Foundation
 import SwiftUI
 
 //extension TaskView {
-    @MainActor class TaskViewModel: ObservableObject {
-        @Published var todos: [ToDo] = []
+@MainActor class TaskViewModel: ObservableObject {
+    
+    @Published var todos: [ToDo] = [] 
         @Published var showingUpdate = false
         @Published var showingOptions = false
-        let todoApi = API()
-        func getAllTodos() async {
-            let allTodos = await todoApi.getToDos()
-            self.todos = allTodos
-        }
     }
 //}

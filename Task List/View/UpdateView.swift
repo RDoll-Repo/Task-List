@@ -38,25 +38,15 @@ struct UpdateView: View {
                             dueDate: "\(due)",
                             completed: false))
                     } else if (EditType == "Edit") {
-                        Task {
-                            await API().updateToDo(updated: ToDo(
-                                id: todo.id,
-                                taskDescription: todo.taskDescription,
-                                dueDate: "\(due)",
-                                completed: false,
-                                createdAt: todo.createdAt))
-                            viewModel.todos = await API().getToDos()
-                            //await viewModel.getAllTodos()
-                            print(viewModel.todos)
-                        }
+                        await api.updateToDo(updated: ToDo(
+                            id: todo.id,
+                            taskDescription: todo.taskDescription,
+                            dueDate: "\(due)",
+                            completed: false,
+                            createdAt: todo.createdAt))
+                        viewModel.todos = await api.getToDos()
                     }
-//                .task {
-//                        viewModel.todos = await API().getToDos()
-//                    }
                     dismiss()
-                    Task {
-                        viewModel.todos = await API().getToDos()
-                    }
                 }
             }
         }

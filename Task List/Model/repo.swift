@@ -22,8 +22,12 @@ protocol repo {
 
 
 class API:repo {
+
+    let defaultQueryString = "http://localhost:3000/tasks"
+    var queryString = "http://localhost:3000/tasks"
+    
     func getToDos() async -> [ToDo] {
-        let req = AF.request("http://localhost:3000/tasks", method: .get , parameters: nil)
+        let req = AF.request(queryString, method: .get , parameters: nil)
         let todos = try! await req.serializingDecodable([ToDo].self).value
         return todos
     }

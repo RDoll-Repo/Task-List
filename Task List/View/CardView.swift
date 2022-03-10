@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     @State private var showingUpdate = false
-    @State var todo:ToDo
+    var todo:ToDo
     var viewModel:TaskViewModel
     var api:API
     
@@ -37,7 +37,6 @@ struct CardView: View {
             
             HStack() {
                 HStack {
-                    
                     /**
                     Edit ToDo Button
                      */
@@ -48,11 +47,7 @@ struct CardView: View {
                             .resizable(capInsets: EdgeInsets(top: 0.0, leading: 30.0, bottom: 0.0, trailing: 0.0))
                     }
                     .frame(width: 30.0, height: 30.0)
-                    .sheet(isPresented: $showingUpdate, onDismiss: {
-                        Task {
-                            print("ondismiss")
-                        }
-                    }) {
+                    .sheet(isPresented: $showingUpdate) {
                         UpdateView(todo:todo, due: Date(), EditType: "Edit", viewModel: viewModel, api:api)
                     }
                     
@@ -73,8 +68,16 @@ struct CardView: View {
                 
                 Button {
                     Task {
-                        todo.completed.toggle()
-                        await api.updateToDo(updated: todo)
+                        var status:Bool
+                        
+                        if todo.completed == true {
+                            status = false
+                        } else {
+                            status = true
+                        }
+                        
+                        await api.updateToDo(updated: ToDo(id: todo.id, taskDescription: todo.taskDescription, dueDate: todo.dueDate, completed: status, createdAt: todo.createdAt))
+                        viewModel.todos = await api.getToDos()
                     }
                 } label: {
                     
